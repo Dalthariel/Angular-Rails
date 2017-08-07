@@ -1,7 +1,7 @@
 10.times do |proposal|
 	Proposal.create!(
 		customer: "Customer #{proposal}",
-		portfolio_url: string = "http://davidhamaker.com",
+		portfolio_url: "http://davidhamaker.com",
 		tools: "Ruby on Rails, Angular2, and PostGreSQL",
 		estimated_hours: (70 + proposal),
 		hourly_rate: 50,
