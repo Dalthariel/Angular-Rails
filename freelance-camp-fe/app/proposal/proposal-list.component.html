@@ -1,0 +1,17 @@
+<div class="container">
+	<div class="list-group">
+		<a class="list-group-item list-group-item-action active">
+			<h1>Proposal List</h1>
+		</a>
+		<span *ngFor="let proposal of proposals" class="list-group-item list-group-item-action">
+			<a routerLink="/proposal/{{proposal.id}}" class="proposal-link">
+				<h5 class="list-group-item-heading">{{proposal.customer}}</h5>
+				<p class="list-group-item-text">
+					Estimate sent: {{ proposal.hourly_rate * proposal.estimated_hours | currency:"USD":true:'.0' }}
+					<!-- The .0 means there are no decimal points.  .2 would be the standard two decimals for cents. -->
+					<!-- USD in quotes with :true gives a dollar sign instead of printing USD on the front. -->
+				</p>
+			</a>
+		</span>
+	</div>
+</div>

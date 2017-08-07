@@ -1,0 +1,37 @@
+body {
+	background-color: #252830;
+	font-family: "Ubuntu", sans-serif;
+}
+
+.headline {
+	color: white;
+}
+
+.card {
+	margin-top: 15px
+}
+
+.nav-styles {
+	background-color: #1a1b22;
+}
+
+.nav-styles a {
+	color: #c9c9c9;
+}
+
+.nav-styles a:hover {
+	color: grey;
+}
+
+.nav-link.active {
+	color: #e64758 !important;
+}
+
+.dropdown-links a {
+	color: #1a1b22;
+}
+
+.dropdown-links a:hover {
+	color: #252830;
+}
+
