@@ -7,7 +7,7 @@ import { Proposal } from './proposal';
 
 @Injectable()
 export class ProposalService {
-	private proposalsUrl = 'http://localhost:3002/proposals.json';
+	private proposalsUrl = 'http://localhost:3002/proposals'; // just change this URL to change where the data comes from
 
 	constructor(
 		private http: Http
@@ -19,16 +19,20 @@ export class ProposalService {
 										.catch(this.handleError);
 	}
 
+  getProposal(id: number) {
+    return this.http.get(this.proposalsUrl + "/" + id + '.json');
+  }
+
 	private handleError (error: Response | any) {
 		let errMsg: string;
-		if (error instanceof Response) {
-			const body = error.json() || '';
-			const err = body.error || JSON.stringify(body);
-			errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-		} else {
-			errMsg = error.message ? error.message : error.toString();
-		}
-		console.error(errMsg);
-		return Observable.throw(errMsg);
-	}
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      const err = body.error || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
+    }
+    console.error(errMsg);
+    return Observable.throw(errMsg);
+  }
 }
