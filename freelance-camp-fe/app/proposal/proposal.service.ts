@@ -4,7 +4,6 @@ import { Observable } from 'rxjs/Rx';
 
 import { Proposal } from './proposal';
 
-
 @Injectable()
 export class ProposalService {
 	private proposalsUrl = 'http://localhost:3002/proposals'; // just change this URL to change where the data comes from
@@ -21,6 +20,12 @@ export class ProposalService {
 
   getProposal(id: number) {
     return this.http.get(this.proposalsUrl + "/" + id + '.json');
+  }
+
+  createProposal(proposal) {
+    let headers = new Headers({ 'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(this.proposalsUrl, JSON.stringify(proposal), {headers: headers}).map((res: Response) => res.json());
   }
 
 	private handleError (error: Response | any) {
