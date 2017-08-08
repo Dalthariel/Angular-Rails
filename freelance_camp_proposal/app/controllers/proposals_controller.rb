@@ -18,6 +18,7 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.new(proposal_params)
 
     if @proposal.save
+      ProposalMailer.email(@proposal).deliver_later # email server not set up, update development.rb as part of email setup, maybe check out Sparkpost
       render json: @proposal, status: :created, location: @proposal
     else
       render json: @proposal.errors, status: :unprocessable_entity
