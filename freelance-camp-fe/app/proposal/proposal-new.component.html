@@ -115,7 +115,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="client_email">Client Email</label>
+						<label for="client_email">Client Email <em>(Optional)</em></label>
 						<input type="email"
 									class="form-control"
 									id="client_email"
@@ -125,6 +125,15 @@
 									[(ngModel)]="proposal.client_email"
 						>
 					</div>
+
+					<button type="submit"
+						class="btn btn-outline-primary btn-lg"
+						[disabled]="!proposalForm.form.valid"
+						[hidden]="submitted"
+					>
+						Generate Proposal
+					</button>
+
 				</form>
 			</div>	
 		</div>
